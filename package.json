@@ -1,5 +1,5 @@
 {
-  "name": "epoint-frame-tool",
+  "name": "epoint-f9-tool",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,9 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "epoint-tool": "./index.js"
+    "epoint-f9-tool": "./index.js"
   },
-  "author": "chends",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cdswyda/epoint-f9-frame-tool.git"
+  },
+  "author": "Douglas Chen",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^9.7.5",
