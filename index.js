@@ -82,7 +82,7 @@ function copyConfigFile() {
     const pkgDir = __dirname;
     const aimDir = process.cwd();
 
-    fs.copyFileSync(path.join(pkgDir, 'epoint.config.demo'), path.join(aimDir, 'epoint.config.js'));
+    fs.copyFileSync(path.join(pkgDir, 'epoint.config.demo.js'), path.join(aimDir, 'epoint.config.js'));
 
     fs.copyFileSync(path.join(pkgDir, 'bs-config.js'), path.join(aimDir, 'bs-config.js'));
 
