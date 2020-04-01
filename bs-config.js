@@ -46,7 +46,7 @@ module.exports = {
         middleware: function(req, res, next) {
             if (/\.json|\.txt/.test(req.url) && req.method.toUpperCase() == 'POST') {
                 // console.log(req);
-                console.log('[POST => GET] : ' + req.url);
+                console.log('[BrowserSync] [POST => GET] : ' + req.url);
                 req.method = 'GET';
                 // console.log(res);
             }
@@ -67,7 +67,8 @@ module.exports = {
             toggles: true
         }
     },
-    logLevel: 'info',
+    logLevel: 'silent',
+    // 'logLevel': 'info',
     // 'logLevel': 'debug',
     logPrefix: 'BrowserSync',
     logConnections: false,
