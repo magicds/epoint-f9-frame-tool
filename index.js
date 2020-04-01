@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* eslint-env node, es6 */
+
 const pkg = require('./package.json');
 const yargs = require('yargs');
 
@@ -13,6 +13,7 @@ function run() {
     yargs
         .command('start', 'start epoint tool')
         .command('init', 'init an config file')
+        .command('copytheme', 'copy a theme files')
         // .version(function() {
         //     return pkg.version;
         // })
@@ -22,7 +23,7 @@ function run() {
                 'you can run this blow command:',
                 '  $0 start',
                 '',
-                '  $0 init',
+                '  $0 init'
             ].join('\n')
         );
 
@@ -73,6 +74,11 @@ function run() {
 
         // console.log('process.cwd()', process.cwd());
         copyConfigFile();
+        return;
+    }
+
+    if (command == 'copytheme') {
+        require('./copyFui.js')();
         return;
     }
 

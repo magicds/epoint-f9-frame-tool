@@ -14,16 +14,18 @@ const uglify = require('gulp-uglify');
 
 const chalkAnimation = require('chalk-animation');
 
-const chalk = require('chalk');
-const error = chalk.bold.red;
-const warning = chalk.keyword('orange');
-const gray = chalk.gray;
-const success = chalk.green;
-const prefix = chalk.bgGreen.black;
+// const chalk = require('chalk');
+// const error = chalk.bold.red;
+// const warning = chalk.keyword('orange');
+// const gray = chalk.gray;
+// const success = chalk.green;
+// const prefix = chalk.bgGreen.black;
 
-function log() {
-    return console.log(prefix('[epoint tool]'), ...arguments);
-}
+// function log() {
+//     return console.log(prefix('[epoint tool]'), ...arguments);
+// }
+
+const { error, warning, gray, success, prefix, log } = require('./log.js');
 
 const GLOBAL_IGNORES = ['!**/node_modules'];
 

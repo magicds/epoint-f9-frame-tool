@@ -17,4 +17,7 @@ epoint-f9-tool init
 
 # 启动监控
 epoint-f9-tool start -c epoint.config.js
+
+# 抽取主题 命令之后是交互式终端
+epoint-f9-tool copytheme
 ```
