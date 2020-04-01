@@ -1,6 +1,6 @@
 {
   "name": "@epoint-fe/f9-tool",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "epoint f9 frame frontend build tools",
   "main": "index.js",
   "scripts": {

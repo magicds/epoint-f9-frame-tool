@@ -136,7 +136,7 @@ module.exports = function runCompile(config) {
     // scss  watch
     if (sassOpt && sassOpt.watch.length) {
         log(success('sass 监控已启用'));
-        watchSass(sassOpt.watch, sassOpt.compileOptions, sassOpt.option);
+        watchSass(sassOpt.watch, sassOpt.compileOptions, sassOpt.output);
     } else {
         log(gray('sass 监控未启用'));
     }
