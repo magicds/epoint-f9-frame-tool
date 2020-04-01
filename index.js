@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-env node, es6 */
 const pkg = require('./package.json');
 const yargs = require('yargs');
 
@@ -85,6 +86,7 @@ function copyConfigFile() {
     fs.copyFileSync(path.join(pkgDir, 'epoint.config.demo.js'), path.join(aimDir, 'epoint.config.js'));
 
     fs.copyFileSync(path.join(pkgDir, 'bs-config.js'), path.join(aimDir, 'bs-config.js'));
+    fs.copyFileSync(path.join(pkgDir, '.browserslistrc'), path.join(aimDir, '.browserslistrc'));
 
     console.log(['配置文件初始化完成，请检查:', '[epoint.config.js]  js和css自动化配置', '[bs-config.js] BrowserSync 详细配置'].join('\n'));
 }

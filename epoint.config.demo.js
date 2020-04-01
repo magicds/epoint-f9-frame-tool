@@ -1,8 +1,9 @@
-// eslint-disable
+/* eslint-env node, es6 */
 module.exports = {
     sass: {
         watch: ['test/**/*.scss'],
-        option: {
+        compileOptions: {},
+        output: {
             // 是否同时输出带min的css 可直接配置为布尔值或根据 输入文件判断
             withMin: false,
             // withMin: function(inputFile) {
@@ -15,10 +16,7 @@ module.exports = {
         }
     },
     js: {
-        watch: ['test/**/*.js'],
-        option: {
-            withMin: false
-        }
+        watch: ['test/**/*.js']
     },
     browserSync: true,
     browserSyncConfig: './bs-config.js'

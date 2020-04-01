@@ -1,3 +1,4 @@
+/* eslint-env node, es6 */
 const gulp = require('gulp');
 // const sass = require('sass');
 const postcss = require('gulp-postcss');
@@ -26,10 +27,10 @@ function log() {
 
 const GLOBAL_IGNORES = ['!**/node_modules'];
 
-function renderSass(input, opt) {
+function renderSass(input, opt, output) {
     var p = gulp
         .src(input)
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass(opt).on('error', sass.logError))
         .pipe(postcss([autoprefixer, cssnano]))
         .pipe(rename({ extname: '.css' }))
         .pipe(gulp.dest('./'))
@@ -37,7 +38,7 @@ function renderSass(input, opt) {
             log(gray(input), success('compile success'));
         });
 
-    const withMin = typeof opt.withMin == 'function' ? opt.withMin(input) : opt.withMin;
+    const withMin = typeof output.withMin == 'function' ? output.withMin(input) : output.withMin;
     if (withMin) {
         p.pipe(
             rename({
@@ -74,7 +75,8 @@ function miniJs(input) {
 
 function watchSass(
     globs = ['**/*.scss'],
-    opt = {
+    opt = {},
+    output = {
         withMin: true
     }
 ) {
@@ -93,7 +95,7 @@ function watchSass(
 
     watcher.on('all', function(type, filePath) {
         log(gray(type), filePath);
-        return renderSass(filePath, opt);
+        return renderSass(filePath, opt, output);
     });
 
     return watcher.close;
@@ -132,7 +134,7 @@ module.exports = function runCompile(config) {
     // scss  watch
     if (sassOpt && sassOpt.watch.length) {
         log(success('sass 监控已启用'));
-        watchSass(sassOpt.watch, sassOpt.option);
+        watchSass(sassOpt.watch, sassOpt.compileOptions, sassOpt.option);
     } else {
         log(gray('sass 监控未启用'));
     }

@@ -1,0 +1,5 @@
+# https://github.com/browserslist/browserslist#browserslistrc
+
+> 0.01%
+last 10 versions
+not ie < 8

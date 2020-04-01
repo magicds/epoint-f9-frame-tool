@@ -11,7 +11,7 @@
  |
  |
  */
-// eslint-disable-next-line
+/* eslint-env node, es6 */
 const path = require('path');
 module.exports = {
     ui: {
@@ -69,7 +69,7 @@ module.exports = {
     },
     logLevel: 'info',
     // 'logLevel': 'debug',
-    logPrefix: 'Browsersync',
+    logPrefix: 'BrowserSync',
     logConnections: false,
     logFileChanges: true,
     logSnippet: true,
