@@ -7,6 +7,9 @@ const chalkAnimation = require('chalk-animation');
 const path = require('path');
 
 const fs = require('fs');
+
+const { error, warning, gray, success, prefix, log } = require('./log.js');
+
 run();
 
 function run() {
@@ -23,7 +26,10 @@ function run() {
                 'you can run this blow command:',
                 '  $0 start',
                 '',
-                '  $0 init'
+                '  $0 init',
+                '',
+                '  $0 copytheme',
+                '',
             ].join('\n')
         );
 
@@ -36,7 +42,7 @@ function run() {
 
     const command = argv._[0];
 
-    console.log('use command', command);
+    log(`use command: ${command}`);
     if (command == 'start') {
         // 开始执行的命令
         yargs.reset();
@@ -58,10 +64,10 @@ function run() {
             configFilePath = path.resolve(process.cwd(), configFilePath);
 
             if (!fs.existsSync(configFilePath)) {
-                console.log('配置文件不存在，请使用 init 命令初始化或使用 -config 配置项传入');
+                log(error('配置文件不存在，请使用 init 命令初始化或使用 -config 配置项传入'));
             }
 
-            console.log('do start ', configFilePath);
+            log('do start ', success(configFilePath));
 
             require('./compile.js')(require(configFilePath));
         }
