@@ -10,6 +10,10 @@ const fs = require('fs');
 
 const { error, warning, gray, success, prefix, log } = require('./log.js');
 
+const binName = Object.keys(pkg.bin)[0];
+
+console.log(binName);
+
 run();
 
 function run() {
@@ -24,12 +28,12 @@ function run() {
             [
                 // prettier-ignore
                 'you can run this blow command:',
-                '  $0 start',
+                `  ${binName} start`,
                 '',
-                '  $0 init',
+                `  ${binName} init`,
                 '',
-                '  $0 copytheme',
-                '',
+                `  ${binName} copytheme`,
+                ''
             ].join('\n')
         );
 
@@ -42,7 +46,7 @@ function run() {
 
     const command = argv._[0];
 
-    log(`use command: ${command}`);
+    log(`use command: ${command || ''}`);
     if (command == 'start') {
         // 开始执行的命令
         yargs.reset();
@@ -54,7 +58,7 @@ function run() {
                     default: 'epoint.config.js'
                 }
             })
-            .default('cwd', function() {
+            .default('cwd', function () {
                 return process.cwd();
             })
             .help().argv;
@@ -79,7 +83,8 @@ function run() {
         // console.log('__dirname', __dirname);
 
         // console.log('process.cwd()', process.cwd());
-        copyConfigFile();
+        // copyConfigFile();
+        require('./initConfig.js')();
         return;
     }
 

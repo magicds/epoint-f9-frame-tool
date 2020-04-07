@@ -20,14 +20,7 @@ module.exports = {
             port: 8080
         }
     },
-    files: [
-        // eslint-disable-next-line
-        'frame/projects/**/*.html',
-        'frame/projects/**/*.js',
-        'frame/projects/**/*.css',
-        'frame/fui/**/*.js',
-        'frame/fui/**/*.css'
-    ],
+    {{files}}
     watchEvents: ['change', 'add', 'addDir'],
     watchOptions: {
         ignoreInitial: true,
@@ -38,21 +31,7 @@ module.exports = {
     //     key: path.resolve('D:\\tools\\nginx\\key\\localhost+3-key.pem'),
     //     cert: path.resolve('D:\\tools\\nginx\\key\\localhost+3.pem')
     // },
-    server: {
-        baseDir: './',
-        routes: {
-            '/ep94': './'
-        },
-        middleware: function(req, res, next) {
-            if (/\.json|\.txt/.test(req.url) && req.method.toUpperCase() == 'POST') {
-                // console.log(req);
-                console.log('[BrowserSync] [POST => GET] : ' + req.url);
-                req.method = 'GET';
-                // console.log(res);
-            }
-            next();
-        }
-    },
+    {{server}}
     proxy: false,
     port: 3000,
     middleware: false,
