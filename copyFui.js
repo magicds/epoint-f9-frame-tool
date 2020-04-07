@@ -72,7 +72,7 @@ async function zipFile(name, themeDir, outputFile) {
  * @param {string} themeDir 主题路径
  */
 async function doCopy(name, themeDir) {
-    const outputFile = path.join(process.cwd(), `${name}-${getDT()}.zip`);
+    const outputFile = path.join(process.cwd(), `fui-${name}-${getDT()}.zip`);
 
     if (fse.existsSync(outputFile)) {
         fse.unlinkSync(outputFile);
@@ -123,7 +123,7 @@ module.exports = function runCopy() {
         ])
         .then(async answers => {
             // console.log('你选择了' + answers.theme);
-            let str = `正在拷贝${answers.theme}主题`;
+            let str = `正在拷贝 ${answers.theme} 主题`;
             const rainbow = chalkAnimation.rainbow(str);
             const t = setInterval(() => {
                 rainbow.replace((str += '.'));
