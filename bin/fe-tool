@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 const yargs = require('yargs');
 
 const chalkAnimation = require('chalk-animation');
@@ -8,7 +8,7 @@ const path = require('path');
 
 const fs = require('fs');
 
-const { error, warning, gray, success, prefix, log } = require('./log.js');
+const { error, warning, gray, success, prefix, log } = require('../lib/log.js');
 
 const binName = Object.keys(pkg.bin)[0];
 
@@ -73,7 +73,7 @@ function run() {
 
             log('do start ', success(configFilePath));
 
-            require('./compile.js')(require(configFilePath));
+            require('../lib/compile.js')(require(configFilePath));
         }
         return;
     }
@@ -84,26 +84,15 @@ function run() {
 
         // console.log('process.cwd()', process.cwd());
         // copyConfigFile();
-        require('./initConfig.js')();
+        require('../lib/initConfig.js')();
         return;
     }
 
     if (command == 'copytheme') {
-        require('./copyFui.js')();
+        require('../lib/copyFui.js')();
         return;
     }
 
     yargs.showHelp();
 }
 
-function copyConfigFile() {
-    const pkgDir = __dirname;
-    const aimDir = process.cwd();
-
-    fs.copyFileSync(path.join(pkgDir, 'epoint.config.demo.js'), path.join(aimDir, 'epoint.config.js'));
-
-    fs.copyFileSync(path.join(pkgDir, 'bs-config.js'), path.join(aimDir, 'bs-config.js'));
-    fs.copyFileSync(path.join(pkgDir, '.browserslistrc'), path.join(aimDir, '.browserslistrc'));
-
-    console.log(['配置文件初始化完成，请检查:', '[epoint.config.js]  js和css自动化配置', '[bs-config.js] BrowserSync 详细配置'].join('\n'));
-}

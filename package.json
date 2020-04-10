@@ -1,14 +1,14 @@
 {
-  "name": "@epoint-fe/f9-tool",
-  "version": "1.0.13",
-  "description": "epoint f9 frame frontend build tools",
+  "name": "@epoint-fe/fe-tool",
+  "version": "1.0.0",
+  "description": "epoint frontend build tools",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pub": "npm publish . --access=public"
   },
   "bin": {
-    "epoint-f9-tool": "./index.js"
+    "fe-tool": "./bin/fe-tool"
   },
   "repository": {
     "type": "git",
