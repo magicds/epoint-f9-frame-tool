@@ -26,6 +26,8 @@ fe-tool start -c epoint.config.js
 fe-tool copytheme
 ```
 
+![](//qiniu.cdswyda.com//github/fe-tool-demo.gif)
+
 ## options
 
 查看生成的 `epoint.config.js` 文件。
