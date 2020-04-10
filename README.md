@@ -26,7 +26,7 @@ fe-tool start -c epoint.config.js
 fe-tool copytheme
 ```
 
-![](//qiniu.cdswyda.com//github/fe-tool-demo.gif)
+![](https://qiniu.cdswyda.com//github/fe-tool-demo.gif)
 
 ## options
 
