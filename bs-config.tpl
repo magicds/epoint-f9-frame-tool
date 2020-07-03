@@ -20,7 +20,7 @@ module.exports = {
             port: 8080
         }
     },
-    {{files}}
+    {{files}},
     watchEvents: ['change', 'add', 'addDir'],
     watchOptions: {
         ignoreInitial: true,
@@ -31,7 +31,8 @@ module.exports = {
     //     key: path.resolve('D:\\tools\\nginx\\key\\localhost+3-key.pem'),
     //     cert: path.resolve('D:\\tools\\nginx\\key\\localhost+3.pem')
     // },
-    {{server}}
+    {{server}},
+    {{extConfig}},
     proxy: false,
     port: 3000,
     middleware: false,

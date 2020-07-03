@@ -1,6 +1,6 @@
 {
   "name": "@epoint-fe/fe-tool",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "epoint frontend build tools",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "url": "git@github.com:cdswyda/epoint-f9-frame-tool.git"
   },
   "author": "Douglas Chen",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "archiver": "^3.1.1",
     "autoprefixer": "^9.7.5",
