@@ -1,5 +1,6 @@
 {
     "eslint.options": {
         "configFile": ".eslintrc.js"
-    }
+    },
+    "prettier.tabWidth": 4
 }

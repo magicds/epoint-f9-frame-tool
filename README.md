@@ -24,6 +24,9 @@ fe-tool start -c epoint.config.js
 
 # 抽取主题 命令之后是交互式终端
 fe-tool copytheme
+
+# 编译 sass/scss
+fe-tool sass -f [要编译文件sass、scss文件] -m [是否同时输出.min.css文件]
 ```
 
 ![](https://qiniu.cdswyda.com//github/fe-tool-demo.gif)

@@ -8,6 +8,8 @@ const path = require('path');
 
 const fs = require('fs');
 
+const compile = require('../lib/compile.js');
+
 const { error, warning, gray, success, prefix, log } = require('../lib/log.js');
 
 const binName = Object.keys(pkg.bin)[0];
@@ -21,6 +23,7 @@ function run() {
         .command('start', 'start epoint tool')
         .command('init', 'init an config file')
         .command('copytheme', 'copy a theme files')
+        .command('sass', 'compile a sass/scss file')
         // .version(function() {
         //     return pkg.version;
         // })
@@ -33,7 +36,9 @@ function run() {
                 `  ${binName} init`,
                 '',
                 `  ${binName} copytheme`,
-                ''
+                '',
+                `  ${binName} sass`,
+                '',
             ].join('\n')
         );
 
@@ -50,13 +55,13 @@ function run() {
     if (command == 'start') {
         // 开始执行的命令
         yargs.reset();
-        var out = yargs
+        let out = yargs
             .option({
                 config: {
                     alias: 'c',
                     desc: '配置文件',
-                    default: 'epoint.config.js'
-                }
+                    default: 'epoint.config.js',
+                },
             })
             .default('cwd', function () {
                 return process.cwd();
@@ -73,7 +78,7 @@ function run() {
 
             log('do start ', success(configFilePath));
 
-            require('../lib/compile.js')(require(configFilePath));
+            compile.runCompile(require(configFilePath));
         }
         return;
     }
@@ -93,6 +98,36 @@ function run() {
         return;
     }
 
+    if (command == 'sass') {
+        yargs.reset();
+        let out = yargs
+            .option({
+                file: {
+                    alias: 'f',
+                    desc: '要编译的文件',
+                    default: '',
+                },
+                min: {
+                    alias: 'm',
+                    desc: '',
+                    boolean: true,
+                    default: false,
+                },
+            })
+            .default('cwd', function () {
+                return process.cwd();
+            })
+            .help().argv;
+        let inputFilePath = out.file;
+        let withMin = out.min;
+        if (inputFilePath) {
+            inputFilePath = path.resolve(process.cwd(), inputFilePath);
+
+            log('do sass ', success(inputFilePath), withMin, typeof withMin);
+            compile.renderSass(inputFilePath, withMin);
+        }
+        return;
+    }
+
     yargs.showHelp();
 }
-
