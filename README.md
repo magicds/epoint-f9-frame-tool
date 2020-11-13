@@ -11,6 +11,7 @@ npm i @epoint-fe/fe-tool -g
 ```sh
 # 查看帮助
 fe-tool
+fe-tool --help
 
 # 初始化配置文件
 fe-tool init
@@ -29,7 +30,7 @@ fe-tool copytheme
 fe-tool sass -f [要编译文件sass、scss文件] -m [是否同时输出.min.css文件]
 ```
 
-![](https://qiniu.cdswyda.com//github/fe-tool-demo.gif)
+![](https://qiniu.cdswyda.com/github/fe-tool-demo.gif)
 
 ## options
 

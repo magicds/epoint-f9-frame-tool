@@ -22,7 +22,7 @@ function run() {
     yargs
         .command('start', 'start epoint tool')
         .command('init', 'init an config file')
-        .command('copytheme', 'copy a theme files')
+        .command('copytheme', 'copy a theme\'s files')
         .command('sass', 'compile a sass/scss file')
         // .version(function() {
         //     return pkg.version;
