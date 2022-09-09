@@ -2,6 +2,7 @@
 
 const pkg = require('../package.json');
 const yargs = require('yargs');
+const figlet = require('figlet');
 
 const chalkAnimation = require('chalk-animation');
 const path = require('path');
@@ -14,16 +15,31 @@ const { error, warning, gray, success, prefix, log } = require('../lib/log.js');
 
 const binName = Object.keys(pkg.bin)[0];
 
-console.log(binName);
+// const logo = figlet.textSync('E p o i n t  ' + binName.split('').join(' '), {
+const logo = figlet.textSync('Epoint ' + binName, {
+    // width: 200,
+    horizontalLayout: 'fitted',
+    whitespaceBreak: true
+});
 
-run();
+// console.log(logo);
+const a = chalkAnimation.rainbow(logo);
+
+setTimeout(() => {
+    a.stop();
+    console.log('');
+    run();
+}, 200);
+
+// run();
 
 function run() {
     yargs
         .command('start', 'start epoint tool')
         .command('init', 'init an config file')
-        .command('copytheme', 'copy a theme\'s files')
+        .command('copytheme', "copy a theme's files")
         .command('sass', 'compile a sass/scss file')
+        .command('min', 'minify a javascript/css file')
         // .version(function() {
         //     return pkg.version;
         // })
@@ -39,6 +55,8 @@ function run() {
                 '',
                 `  ${binName} sass`,
                 '',
+                `  ${binName} min`,
+                ''
             ].join('\n')
         );
 
@@ -60,8 +78,8 @@ function run() {
                 config: {
                     alias: 'c',
                     desc: '配置文件',
-                    default: 'epoint.config.js',
-                },
+                    default: 'epoint.config.js'
+                }
             })
             .default('cwd', function () {
                 return process.cwd();
@@ -105,14 +123,14 @@ function run() {
                 file: {
                     alias: 'f',
                     desc: '要编译的文件',
-                    default: '',
+                    default: ''
                 },
                 min: {
                     alias: 'm',
                     desc: '',
                     boolean: true,
-                    default: false,
-                },
+                    default: false
+                }
             })
             .default('cwd', function () {
                 return process.cwd();
@@ -126,6 +144,23 @@ function run() {
             log('do sass ', success(inputFilePath), withMin, typeof withMin);
             compile.renderSass(inputFilePath, withMin);
         }
+        return;
+    }
+    if (command == 'min') {
+        yargs.reset();
+
+        let out = yargs(process.argv.slice(3))
+            .default('cwd', function () {
+                return process.cwd();
+            })
+            .help().argv;
+
+        const source = out._;
+        if (source.length) {
+            log('do minify: ', success(source));
+            compile.mini(source);
+        }
+
         return;
     }
 

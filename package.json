@@ -1,6 +1,6 @@
 {
   "name": "@epoint-fe/fe-tool",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "epoint frontend build tools",
   "main": "bin/fe-tool",
   "scripts": {
@@ -23,6 +23,7 @@
     "chalk": "^3.0.0",
     "chalk-animation": "^1.6.0",
     "cssnano": "^4.1.10",
+    "figlet": "^1.5.2",
     "fs-extra": "^9.0.0",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^0.9.1",

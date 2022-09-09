@@ -28,6 +28,9 @@ fe-tool copytheme
 
 # 编译 sass/scss
 fe-tool sass -f [要编译文件sass、scss文件] -m [是否同时输出.min.css文件]
+
+# 压缩文件 js/css 同目录下输出 a.min.js b.min.css
+fe-tool min a.js b.css
 ```
 
 ![](https://qiniu.cdswyda.com/github/fe-tool-demo.gif)
