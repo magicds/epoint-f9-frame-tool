@@ -21,7 +21,7 @@
     "autoprefixer": "^9.8.8",
     "browser-sync": "^2.26.7",
     "chalk": "^3.0.0",
-    "chalk-animation": "^1.6.0",
+    "chalk-animation": "^2.0.3",
     "cssnano": "^5.1.13",
     "figlet": "^1.5.2",
     "fs-extra": "^9.0.0",
