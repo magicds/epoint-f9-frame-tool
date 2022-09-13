@@ -29,17 +29,32 @@ setTimeout(() => {
     a.stop();
     console.log('');
     run();
-}, 200);
+}, 20);
 
 // run();
 
 function run() {
     yargs
         .command('start', 'start epoint tool')
+        .usage('Usage: $0 start')
+        .example('$0 start', '从当前目录启动监控压缩服务')
+
         .command('init', 'init an config file')
+        .example('$0 init', '在当前目录初始化监控所需配置文件')
+
         .command('copytheme', "copy a theme's files")
+        .usage('Usage: $0 copytheme')
+        .example('$0 copytheme', '启动拷贝主题的交互式命令')
+
         .command('sass', 'compile a sass/scss file')
-        .command('min', 'minify a javascript/css file')
+        .usage('Usage: $0 sass -f [要编译文件sass、scss文件] -m [是否同时输出.min.css文件]')
+        .example('$0 sass -f a.scss -m', '编译当前目录的a.scss 文件 同时输出a.css a.min.css两个文件')
+
+        .command('min', 'minify a javascript/css file', function (yargs) {
+            return yargs.alias('h', 'help').usage('Usage: $0 min [要压缩的文件1] [要压缩的文件2]').example('$0 min a.js b.css', '压缩当前目录下的a.js b.css 输出 a.min.js b.min.css').help().argv;
+        })
+        .usage('Usage: $0 min [要压缩的文件1] [要压缩的文件2]')
+        .example('$0 min a.js b.css', '压缩当前目录下的a.js b.css 输出 a.min.js b.min.css')
         // .version(function() {
         //     return pkg.version;
         // })
@@ -159,6 +174,8 @@ function run() {
         if (source.length) {
             log('do minify: ', success(source));
             compile.mini(source);
+        } else {
+            log(warning('缺少文件输入，请使用 fe-tool min -h 查看帮助'));
         }
 
         return;
