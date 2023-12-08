@@ -27,10 +27,10 @@ fe-tool start -c epoint.config.js
 fe-tool copytheme
 
 # 编译 sass/scss
-fe-tool sass -f [要编译文件sass、scss文件] -m [是否同时输出.min.css文件]
+fe-tool sass -f [要编译文件sass、scss文件] -m [是否同时输出.min.css文件] -o [输出目录] -w [是否watch]
 
 # 压缩文件 js/css 同目录下输出 a.min.js b.min.css
-fe-tool min a.js b.css
+fe-tool min a.js b.css -o [输出目录] -w [是否watch]
 ```
 
 ![](https://qiniu.cdswyda.com/github/fe-tool-demo.gif)

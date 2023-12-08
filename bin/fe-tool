@@ -145,6 +145,17 @@ function run() {
                     desc: '',
                     boolean: true,
                     default: false
+                },
+                outpath: {
+                    alias: 'o',
+                    desc: '输出的路径',
+                    default: './'
+                },
+                watch: {
+                    alias: 'w',
+                    desc: '是否watch',
+                    boolean: true,
+                    default: false
                 }
             })
             .default('cwd', function () {
@@ -155,9 +166,13 @@ function run() {
         let withMin = out.min;
         if (inputFilePath) {
             inputFilePath = path.resolve(process.cwd(), inputFilePath);
+            outpath = path.resolve(process.cwd(), out.outpath);
 
             log('do sass ', success(inputFilePath), withMin, typeof withMin);
-            compile.renderSass(inputFilePath, withMin);
+            compile.renderSass(inputFilePath, withMin, {
+                outpath: outpath,
+                watch: out.watch
+            });
         }
         return;
     }
@@ -165,6 +180,25 @@ function run() {
         yargs.reset();
 
         let out = yargs(process.argv.slice(3))
+            .option({
+                outpath: {
+                    alias: 'o',
+                    desc: '输出的路径',
+                    default: './'
+                },
+                map: {
+                    alias: 'm',
+                    desc: '是否需要source map',
+                    boolean: true,
+                    default: false
+                },
+                watch: {
+                    alias: 'w',
+                    desc: '是否watch',
+                    boolean: true,
+                    default: false
+                }
+            })
             .default('cwd', function () {
                 return process.cwd();
             })
@@ -173,7 +207,11 @@ function run() {
         const source = out._;
         if (source.length) {
             log('do minify: ', success(source));
-            compile.mini(source);
+            compile.mini(source, {
+                outpath: path.resolve(process.cwd(), out.outpath),
+                map: out.map,
+                watch: out.watch
+            });
         } else {
             log(warning('缺少文件输入，请使用 fe-tool min -h 查看帮助'));
         }

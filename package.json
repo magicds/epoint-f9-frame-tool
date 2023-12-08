@@ -1,6 +1,6 @@
 {
   "name": "@epoint-fe/fe-tool",
-  "version": "1.2.7",
+  "version": "1.3.1",
   "description": "epoint frontend build tools",
   "main": "bin/fe-tool",
   "scripts": {
